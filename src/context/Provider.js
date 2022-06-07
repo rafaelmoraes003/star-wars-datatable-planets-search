@@ -6,6 +6,9 @@ function Provider({ children }) {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState('');
   const [inputValue, setInputValue] = useState('');
+  const [columnValue, setColumnValue] = useState('population');
+  const [operatorValue, setOperatorValue] = useState('maior que');
+  const [numberValue, setNumberValue] = useState(0);
 
   useEffect(() => {
     const fetchPlanets = async () => {
@@ -26,6 +29,25 @@ function Provider({ children }) {
     setInputValue(value);
   };
 
+  const handleNumericChanges = () => {
+    if (operatorValue === 'maior que') {
+      const filteredByBigger = data.filter((planet) => (
+        Number(planet[columnValue]) > Number(numberValue)
+      ));
+      setFilteredData(filteredByBigger);
+    } else if (operatorValue === 'menor que') {
+      const filteredBySmallest = data.filter((planet) => (
+        Number(planet[columnValue]) < Number(numberValue)
+      ));
+      setFilteredData(filteredBySmallest);
+    } else {
+      const filteredByEqual = data.filter((planet) => (
+        Number(planet[columnValue]) === Number(numberValue)
+      ));
+      setFilteredData(filteredByEqual);
+    }
+  };
+
   useEffect(() => { // filtra os nomes dos planetas de acordo com o input
     const filtered = data.filter((planet) => (
       planet.name.includes(inputValue)
@@ -40,6 +62,18 @@ function Provider({ children }) {
     filterByName: {
       name: inputValue,
     },
+    setColumnValue,
+    setOperatorValue,
+    setNumberValue,
+    numberValue,
+    handleNumericChanges,
+    filterByNumericValues: [
+      {
+        column: columnValue,
+        comparison: operatorValue,
+        value: numberValue,
+      },
+    ],
   };
 
   return (
