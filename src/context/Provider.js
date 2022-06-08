@@ -9,6 +9,9 @@ function Provider({ children }) {
   const [columnValue, setColumnValue] = useState('population');
   const [operatorValue, setOperatorValue] = useState('maior que');
   const [numberValue, setNumberValue] = useState(0);
+  const [filterByNumericValues, setFilterByNumericValues] = useState([]);
+
+  // ------------------------------------------------------------------------------------------ USEEFFECT
 
   useEffect(() => {
     const fetchPlanets = async () => {
@@ -25,55 +28,53 @@ function Provider({ children }) {
     fetchPlanets();
   }, []);
 
-  const handleChange = (value) => {
-    setInputValue(value);
-  };
-
-  const handleNumericChanges = () => {
-    if (operatorValue === 'maior que') {
-      const filteredByBigger = data.filter((planet) => (
-        Number(planet[columnValue]) > Number(numberValue)
-      ));
-      setFilteredData(filteredByBigger);
-    } else if (operatorValue === 'menor que') {
-      const filteredBySmallest = data.filter((planet) => (
-        Number(planet[columnValue]) < Number(numberValue)
-      ));
-      setFilteredData(filteredBySmallest);
-    } else {
-      const filteredByEqual = data.filter((planet) => (
-        Number(planet[columnValue]) === Number(numberValue)
-      ));
-      setFilteredData(filteredByEqual);
-    }
-  };
-
-  useEffect(() => { // filtra os nomes dos planetas de acordo com o input
+  useEffect(() => {
     const filtered = data.filter((planet) => (
       planet.name.includes(inputValue)
     ));
     setFilteredData(filtered);
   }, [inputValue, data]);
 
+  const handleNumericChanges = () => {
+    if (operatorValue === 'maior que') {
+      const filteredByBigger = filteredData.filter((planet) => (
+        Number(planet[columnValue]) > Number(numberValue)
+      ));
+      setFilteredData(filteredByBigger);
+    } else if (operatorValue === 'menor que') {
+      const filteredBySmallest = filteredData.filter((planet) => (
+        Number(planet[columnValue]) < Number(numberValue)
+      ));
+      setFilteredData(filteredBySmallest);
+    } else {
+      const filteredByEqual = filteredData.filter((planet) => (
+        Number(planet[columnValue]) === Number(numberValue)
+      ));
+      setFilteredData(filteredByEqual);
+    }
+
+    setFilterByNumericValues(filterByNumericValues.concat({
+      column: columnValue,
+      comparison: operatorValue,
+      value: numberValue,
+    }));
+  };
+
   const contextValue = {
     data,
     filteredData,
-    handleChange,
     filterByName: {
       name: inputValue,
     },
-    setColumnValue,
-    setOperatorValue,
-    setNumberValue,
     numberValue,
-    handleNumericChanges,
-    filterByNumericValues: [
-      {
-        column: columnValue,
-        comparison: operatorValue,
-        value: numberValue,
-      },
-    ],
+    filterByNumericValues,
+    functions: {
+      setInputValue,
+      setColumnValue,
+      setOperatorValue,
+      setNumberValue,
+      handleNumericChanges,
+    },
   };
 
   return (

@@ -2,13 +2,13 @@ import React, { useContext } from 'react';
 import StarWarsContext from '../context/StarWarsContext';
 
 function NumberFilter() {
+  const { functions, numberValue } = useContext(StarWarsContext);
   const {
     setColumnValue,
     setOperatorValue,
     setNumberValue,
     handleNumericChanges,
-    numberValue,
-  } = useContext(StarWarsContext);
+  } = functions;
 
   const columnList = [
     'population',
