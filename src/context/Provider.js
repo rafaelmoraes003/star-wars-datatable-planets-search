@@ -10,6 +10,13 @@ function Provider({ children }) {
   const [operatorValue, setOperatorValue] = useState('maior que');
   const [numberValue, setNumberValue] = useState(0);
   const [filterByNumericValues, setFilterByNumericValues] = useState([]);
+  const [columnOptions, setColumnOptions] = useState([
+    'population',
+    'orbital_period',
+    'diameter',
+    'rotation_period',
+    'surface_water',
+  ]);
 
   // ------------------------------------------------------------------------------------------ USEEFFECT
 
@@ -58,6 +65,8 @@ function Provider({ children }) {
       comparison: operatorValue,
       value: numberValue,
     }));
+
+    setColumnOptions(columnOptions.filter((item) => item !== columnValue));
   };
 
   const contextValue = {
@@ -66,6 +75,7 @@ function Provider({ children }) {
     filterByName: {
       name: inputValue,
     },
+    columnOptions,
     numberValue,
     filterByNumericValues,
     functions: {

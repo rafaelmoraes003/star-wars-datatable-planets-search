@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import StarWarsContext from '../context/StarWarsContext';
 
 function NumberFilter() {
-  const { functions, numberValue } = useContext(StarWarsContext);
+  const { functions, columnOptions, numberValue } = useContext(StarWarsContext);
   const {
     setColumnValue,
     setOperatorValue,
@@ -10,13 +10,6 @@ function NumberFilter() {
     handleNumericChanges,
   } = functions;
 
-  const columnList = [
-    'population',
-    'orbital_period',
-    'diameter',
-    'rotation_period',
-    'surface_water',
-  ];
   const operatorList = ['maior que', 'menor que', 'igual a'];
 
   return (
@@ -28,7 +21,7 @@ function NumberFilter() {
           data-testid="column-filter"
           onChange={ ({ target }) => setColumnValue(target.value) }
         >
-          {columnList.map((item) => (
+          {columnOptions.map((item) => (
             <option value={ item } key={ item }>{item}</option>
           ))}
         </select>
