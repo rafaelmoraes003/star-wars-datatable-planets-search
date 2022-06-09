@@ -8,6 +8,7 @@ function NumberFilter() {
     setOperatorValue,
     setNumberValue,
     handleNumericChanges,
+    clearAllFilters,
   } = functions;
 
   const operatorList = ['maior que', 'menor que', 'igual a'];
@@ -57,6 +58,14 @@ function NumberFilter() {
         onClick={ handleNumericChanges }
       >
         Filtrar
+      </button>
+
+      <button
+        type="button"
+        data-testid="button-remove-filters"
+        onClick={ clearAllFilters }
+      >
+        Remover filtros
       </button>
     </>
   );
