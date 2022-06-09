@@ -62,45 +62,32 @@ function Provider({ children }) {
     setEnableRemoveFilter(true);
   };
 
+  const setBaseArray = (baseArray) => {
+    filterByNumericValues.forEach((item) => {
+      if (item.comparison === 'maior que') {
+        const filteredByBigger = baseArray.filter((planet) => (
+          Number(planet[item.column]) > Number(item.value)
+        ));
+        setFilteredData(filteredByBigger);
+      } else if (item.comparison === 'menor que') {
+        const filteredBySmallest = baseArray.filter((planet) => (
+          Number(planet[item.column]) < Number(item.value)
+        ));
+        setFilteredData(filteredBySmallest);
+      } else {
+        const filteredByEqual = baseArray.filter((planet) => (
+          Number(planet[item.column]) === Number(item.value)
+        ));
+        setFilteredData(filteredByEqual);
+      }
+    });
+  };
+
   const setFilterByCondition = () => {
-    if (enableRemoveFilter) {
-      filterByNumericValues.forEach((item) => {
-        if (item.comparison === 'maior que') {
-          const filteredByBigger = data.filter((planet) => (
-            Number(planet[item.column]) > Number(item.value)
-          ));
-          setFilteredData(filteredByBigger);
-        } else if (item.comparison === 'menor que') {
-          const filteredBySmallest = data.filter((planet) => (
-            Number(planet[item.column]) < Number(item.value)
-          ));
-          setFilteredData(filteredBySmallest);
-        } else {
-          const filteredByEqual = data.filter((planet) => (
-            Number(planet[item.column]) === Number(item.value)
-          ));
-          setFilteredData(filteredByEqual);
-        }
-      });
-    } else {
-      filterByNumericValues.forEach((item) => {
-        if (item.comparison === 'maior que') {
-          const filteredByBigger = filteredData.filter((planet) => (
-            Number(planet[item.column]) > Number(item.value)
-          ));
-          setFilteredData(filteredByBigger);
-        } else if (item.comparison === 'menor que') {
-          const filteredBySmallest = filteredData.filter((planet) => (
-            Number(planet[item.column]) < Number(item.value)
-          ));
-          setFilteredData(filteredBySmallest);
-        } else {
-          const filteredByEqual = filteredData.filter((planet) => (
-            Number(planet[item.column]) === Number(item.value)
-          ));
-          setFilteredData(filteredByEqual);
-        }
-      });
+    if (enableRemoveFilter) { // Filtra se clicado no botão de remover filtro específico
+      setBaseArray(data);
+    } else { // FIltra em 'cadeia' (filtragem normal)
+      setBaseArray(filteredData);
     }
   };
 
