@@ -120,10 +120,7 @@ function Provider({ children }) {
       const descOrder = filteredData.sort((a, b) => (
         a[order.column] - b[order.column]
       ));
-      const correctDescOrder = descOrder.sort((a, b) => (
-        a[order.column] - b[order.column]
-      ));
-      const fullyCorrectOrder = correctDescOrder.sort((a, b) => (
+      const fullyCorrectOrder = descOrder.sort((a, b) => (
         b[order.column] - a[order.column]
       ));
       setFilteredData(fullyCorrectOrder);
