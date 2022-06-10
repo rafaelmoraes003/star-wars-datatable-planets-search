@@ -18,14 +18,21 @@ function Provider({ children }) {
     'surface_water',
   ]);
   const [enableRemoveFilter, setEnableRemoveFilter] = useState(false);
+  const [orderColumn, setOrderColumn] = useState('population');
+  const [ordenation, setOrdenation] = useState('ASC');
+  const [order, setOrder] = useState({
+    column: orderColumn,
+    sort: ordenation,
+  });
 
   useEffect(() => {
     const fetchPlanets = async () => {
       try {
         const response = await fetch('https://swapi-trybe.herokuapp.com/api/planets/');
         const { results } = await response.json();
-        setData(results);
-        setFilteredData(results);
+        const sortData = results.sort((a, b) => a.name.localeCompare(b.name));
+        setData(sortData);
+        setFilteredData(sortData);
       } catch (error) {
         console.log(error);
       }
@@ -101,12 +108,50 @@ function Provider({ children }) {
     }
   }, [filterByNumericValues]);
 
+  const changeDataOrder = () => {
+    if (order.sort === 'ASC') {
+      const ascOrder = filteredData.sort((a, b) => (
+        b[order.column] - a[order.column]
+      ));
+      const correctAscOrder = ascOrder.sort((a, b) => (
+        a[order.column] - b[order.column]
+      ));
+      setFilteredData(correctAscOrder);
+    }
+
+    if (order.sort === 'DESC') {
+      const descOrder = filteredData.sort((a, b) => (
+        b[order.column] - a[order.column]
+      ));
+      const correctDescOrder = descOrder.sort((a, b) => (
+        a[order.column] - b[order.column]
+      ));
+      const fullyCorrectOrder = correctDescOrder.sort((a, b) => (
+        b[order.column] - a[order.column]
+      ));
+      setFilteredData(fullyCorrectOrder);
+    }
+
+    setOrder({
+      column: orderColumn,
+      sort: ordenation,
+    });
+  };
+
+  useEffect(() => {
+    setOrder({
+      column: orderColumn,
+      sort: ordenation,
+    });
+  }, [orderColumn, ordenation]);
+
   const contextValue = {
     data,
     filteredData,
     filterByName: {
       name: inputValue,
     },
+    order,
     columnOptions,
     numberValue,
     filterByNumericValues,
@@ -118,6 +163,9 @@ function Provider({ children }) {
       handleNumericChanges,
       clearAllFilters,
       removeFilter,
+      setOrderColumn,
+      setOrdenation,
+      changeDataOrder,
     },
   };
 
