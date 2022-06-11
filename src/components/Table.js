@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import StarWarsContext from '../context/StarWarsContext';
+import './Table.css';
 
 function Table() {
   const { filteredData } = useContext(StarWarsContext);

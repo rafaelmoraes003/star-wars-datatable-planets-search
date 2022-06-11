@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import StarWarsContext from '../context/StarWarsContext';
+import './NumberFilter.css';
 
 function NumberFilter() {
   const { functions, columnOptions, numberValue } = useContext(StarWarsContext);
@@ -14,11 +15,12 @@ function NumberFilter() {
   const operatorList = ['maior que', 'menor que', 'igual a'];
 
   return (
-    <>
+    <div id="numeric-filter-container">
       <label htmlFor="column">
         Coluna
         <select
           id="column"
+          className="form-select"
           data-testid="column-filter"
           onChange={ ({ target }) => setColumnValue(target.value) }
         >
@@ -32,6 +34,7 @@ function NumberFilter() {
         Operador
         <select
           id="operator"
+          className="form-select"
           data-testid="comparison-filter"
           onChange={ ({ target }) => setOperatorValue(target.value) }
         >
@@ -46,6 +49,7 @@ function NumberFilter() {
         <input
           type="number"
           id="number"
+          className="input-group-text"
           data-testid="value-filter"
           value={ numberValue }
           onChange={ ({ target }) => setNumberValue(target.value) }
@@ -56,6 +60,7 @@ function NumberFilter() {
         type="button"
         data-testid="button-filter"
         onClick={ handleNumericChanges }
+        className="btn btn-outline-warning"
       >
         Filtrar
       </button>
@@ -64,10 +69,11 @@ function NumberFilter() {
         type="button"
         data-testid="button-remove-filters"
         onClick={ clearAllFilters }
+        className="btn btn-outline-warning"
       >
         Remover filtros
       </button>
-    </>
+    </div>
   );
 }
 

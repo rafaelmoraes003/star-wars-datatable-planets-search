@@ -39,3 +39,17 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  background-color: black;
+}
+
+#main-content {
+  height: 100vh;
+  color: white;
+  padding-top: 20px;
+}
+
+#filters-container {
+  margin: 15px 0;
+}

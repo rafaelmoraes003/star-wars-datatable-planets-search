@@ -1,0 +1,15 @@
+.used-filters-container {
+  margin-left: 15px;
+}
+
+.filter {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid rgb(36, 35, 35);
+  width: max-content;
+  margin-top: 5px;
+}
+
+.filter h4 {
+  width: 200px;
+}

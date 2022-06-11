@@ -1,0 +1,31 @@
+#order-input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#order-input-container button {
+  width: 150px;
+  margin-top: 15px;
+}
+
+#order-input-container label, #order-input-container button {
+  margin-right: 10px;
+}
+
+.radio-btn-holder {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.radio-btn-holder label {
+  display: flex;
+  justify-content: space-between;
+}
+
+.radio-btn-holder input {
+  margin-left: 8px;
+}

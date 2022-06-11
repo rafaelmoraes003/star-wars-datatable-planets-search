@@ -111,9 +111,12 @@ function Provider({ children }) {
   const changeDataOrder = () => {
     if (order.sort === 'ASC') {
       const correctAscOrder = filteredData.sort((a, b) => (
+        b[order.column] - a[order.column]
+      ));
+      const fullyCorrectOrder = correctAscOrder.sort((a, b) => (
         a[order.column] - b[order.column]
       ));
-      setFilteredData(correctAscOrder);
+      setFilteredData(fullyCorrectOrder);
     }
 
     if (order.sort === 'DESC') {
