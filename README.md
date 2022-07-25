@@ -2,7 +2,7 @@
 
 ###
 
-<p align="left">Este projeto tinha como objetivo fazer uma requisição para a API de planetas de Star Wars e possibilitar fazer filtrações entre esses planetas, seja pelo nome do planeta, letras que existem no nome do planeta, filtros numéricos ou por ordenação crescente ou decrescente de valores numéricos. Foi feito usando React Hooks e Context API</p>
+<p align="left">Este projeto tinha como objetivo fazer uma requisição para a API de planetas de Star Wars e possibilitar fazer filtrações entre esses planetas, seja pelo nome do planeta, letras que existem no nome do planeta, filtros numéricos ou por ordenação crescente ou decrescente de valores numéricos. Foi feito usando React Hooks e Context API.</p>
 
 ###
 
