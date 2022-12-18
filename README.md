@@ -1,27 +1,27 @@
-<h1 align="left">Projeto Star Wars Datatable Planets Search</h1>
+<h1 align="left">Star Wars Datatable Planets Search</h1>
 
 ###
 
-<p align="left">Este projeto tinha como objetivo fazer uma requisição para a API de planetas de Star Wars e possibilitar fazer filtrações entre esses planetas, seja pelo nome do planeta, letras que existem no nome do planeta, filtros numéricos ou por ordenação crescente ou decrescente de valores numéricos. Foi feito usando React Hooks e Context API.</p>
+<p align="left">This project aimed to make a request to the Star Wars planets API and make it possible to filter between these planets, either by the name of the planet, letters that exist in the name of the planet, numerical filters or by ascending or descending order of numerical values. It was made using React Hooks and Context API.</p>
 
 ###
 
-<h2 align="left">Tecnologias utilizadas</h2>
+<h2 align="left">Technologies used</h2>
 
 ###
 
 <div align="left">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="70" width="52" alt="javascript logo"  />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="70" width="52" alt="react logo"  />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" height="70" width="52" alt="bootstrap logo"  />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="50" width="62" alt="javascript logo"  />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="50" width="62" alt="react logo"  />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" height="50" width="62" alt="bootstrap logo"  />
 </div>
 
 ###
 
-<h2 align="left">Como utilizar a aplicação</h2>
+<h2 align="left">How to use the application</h2>
 
 ###
 
-Faça o clone da aplicação usando o comando `git clone`. Após isso, entre na pasta do projeto utilizando o comando `cd star-wars-datatable-planets-search` e rode o comando `npm install`. Após a instalação, utilize o comando `npm start`.
+Clone the application using the `git clone` command. After that, enter the project folder using the `cd star-wars-datatable-planets-search` command and run the `npm install` command. After installation, use the `npm start` command.
 
 ###
